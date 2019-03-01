@@ -1,0 +1,19 @@
+.sidebar {
+    background: #f7f8fa;
+}
+
+.content {
+    background: white;
+}
+
+.header {
+    height: 70px;
+}
+
+body {
+    background: ghostwhite !important;
+}
+
+html { height: 100%; }
+body {height: 100%; }
+#app {height: 100%; }
