@@ -2,10 +2,14 @@
 
 namespace App;
 
+use App\Traits\HasPermissions;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Department extends Model
 {
+    use SoftDeletes, HasPermissions;
+
     protected $appends = ['type'];
 
     public function lists(){

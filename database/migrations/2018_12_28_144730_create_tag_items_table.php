@@ -18,6 +18,7 @@ class CreateTagItemsTable extends Migration
             $table->string('name')->unique();
             $table->unsignedInteger('allowed_id')->nullable();
             $table->string('allowed_type')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

@@ -2,10 +2,13 @@
 
 namespace App;
 
+use App\Traits\HasPermissions;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Project extends Model
 {
+    use SoftDeletes, HasPermissions;
 
     public function list(){
         return $this->morphMany(TaskList::class, 'parent');

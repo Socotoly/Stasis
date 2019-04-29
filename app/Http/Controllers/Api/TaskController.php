@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreTask;
 use App\Http\Resources\TaskListCollection;
 use App\Http\Resources\TaskListResource;
 use App\Http\Resources\TaskResource;
@@ -29,7 +30,7 @@ class TaskController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreTask $request)
     {
         $task = Task::create([
             'user_id' => auth()->user()->id,
@@ -61,7 +62,9 @@ class TaskController extends Controller
      */
     public function update(Request $request, Task $task)
     {
-        //
+        $task->update($request->all());
+
+        return response([],200);
     }
 
     /**
@@ -72,6 +75,8 @@ class TaskController extends Controller
      */
     public function destroy(Task $task)
     {
-        //
+        $task->delete();
+
+        return response([], 200);
     }
 }

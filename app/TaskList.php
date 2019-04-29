@@ -4,10 +4,11 @@ namespace App;
 
 use App\Traits\HasPath;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class TaskList extends Model
 {
-    use HasPath;
+    use HasPath, SoftDeletes;
 
     protected $fillable = ['title', 'description', 'parent_id', 'parent_type'];
 

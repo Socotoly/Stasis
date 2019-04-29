@@ -12,16 +12,9 @@ window.Vue = require('vue');
 import Moment from 'moment';
 window.moment = Moment;
 
-// import ElementUI from 'element-ui';
-// import 'element-ui/lib/theme-chalk/index.css';
-import { Avatar, Icon } from 'iview';
-import 'iview/dist/styles/iview.css';
+import Vuetify from 'vuetify';
 
-Vue.component("Avatar",Avatar);
-Vue.component("Icon",Icon);
-
-// Vue.use(ElementUI);
-
+Vue.use(Vuetify);
 
 /**
  * The following block of code may be used to automatically register your

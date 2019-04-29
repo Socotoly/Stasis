@@ -1,10 +1,15 @@
 @extends('layouts.app')
 @section('content')
-    <app-sidebar>
+    <v-flex xs4>
+        <app-sidebar>
 
-    </app-sidebar>
+        </app-sidebar>
 
-    <task-view :item="{{ $task }}">
-    </task-view>
+    </v-flex>
+    <v-flex>
+        <task-view :item="{{ $task }}">
+        </task-view>
+
+    </v-flex>
 
 @endsection
