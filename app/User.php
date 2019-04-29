@@ -2,13 +2,16 @@
 
 namespace App;
 
+use App\Traits\Follower;
+use App\Traits\HasRoles;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, SoftDeletes, HasRoles, Follower;
 
     protected $appends = ['name'];
 

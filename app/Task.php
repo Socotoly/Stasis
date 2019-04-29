@@ -2,20 +2,31 @@
 
 namespace App;
 
+use App\Traits\HasFollowers;
 use App\Traits\HasPath;
 use App\Traits\Taggable;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Task extends Model
 {
-    use Taggable, HasPath;
+    use Taggable, HasPath, SoftDeletes, HasFollowers;
 
     protected $fillable = ['user_id', 'title', 'description', 'task_list_id'];
 
     protected $appends = ['top_parent', 'type'];
 
     protected $dates = ['created_at', 'updated_at', 'start_date', 'due_date', 'completed_at'];
+
+    public static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($task){
+            $task->replies()->delete();
+        });
+    }
 
     public function creator()
     {
@@ -27,10 +38,10 @@ class Task extends Model
         return $this->belongsToMany(User::class)->wherePivot('type', 'Assignee');
     }
 
-    public function followers()
-    {
-        return $this->belongsToMany(User::class)->wherePivot('type', 'Follower');
-    }
+//    public function followers()
+//    {
+//        return $this->belongsToMany(User::class)->wherePivot('type', 'Follower');
+//    }
 
     public function list()
     {
